@@ -256,7 +256,7 @@ export default function Home() {
                 desc: "Text broadcasts, event pages, signups — everything I need to run my in-person coworking community of 50+ people. Built, designed, and shipped solo.",
                 metric: "50+ members",
               },
-            ].map((project, i) => (
+            ].map((project) => (
               <div key={project.title} className="project-row" style={{
                 display: "flex",
                 alignItems: "flex-start",
