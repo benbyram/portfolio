@@ -15,14 +15,20 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "Ben Byram - Product Strategy & UX Consulting",
-  description: "Experienced product manager and UX consultant specializing in product strategy, user experience design, and digital transformation. Available for contract consulting and full-time opportunities.",
-  keywords: "product manager, UX consultant, product strategy, user experience, digital transformation, consulting",
+  metadataBase: new URL("https://benbyram.com"),
+  title: "Ben Byram — Product Leader & AI Consultant",
+  description: "PM and General Manager at CoFounder.AI. I help companies build the right product for the right people — and then actually reach them.",
   authors: [{ name: "Ben Byram" }],
   openGraph: {
-    title: "Ben Byram - Product Strategy & UX Consulting",
-    description: "Experienced product manager and UX consultant specializing in product strategy, user experience design, and digital transformation.",
+    title: "Ben Byram — Product Leader & AI Consultant",
+    description: "PM and General Manager at CoFounder.AI. I help companies build the right product for the right people — and then actually reach them.",
     type: "website",
+    url: "https://benbyram.com",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ben Byram — Product Leader & AI Consultant",
+    description: "PM and General Manager at CoFounder.AI. I help companies build the right product for the right people — and then actually reach them.",
   },
 };
 
