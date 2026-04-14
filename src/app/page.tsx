@@ -3,55 +3,9 @@ import { useState, useEffect } from "react";
 
 const CYCLING_WORDS = ["Startups", "Creator Companies", "Non-Profits"];
 
-function generateLines(input: string): string[] {
-  const short = input.length > 48 ? input.slice(0, 48) + "..." : input;
-  return [
-    `> analyzing: "${short}"`,
-    `> scoping requirements...`,
-    ``,
-    `const engagement = {`,
-    `  lead:     "Ben Byram",`,
-    `  request:  "${short}",`,
-    `  approach: [`,
-    `    "discovery + stakeholder mapping",`,
-    `    "strategy & roadmap",`,
-    `    "execution & iteration",`,
-    `  ],`,
-    `  timeline: "let's talk",`,
-    `}`,
-    ``,
-    `> identifying quick wins...`,
-    `> drafting roadmap...`,
-    `> strategy initialized.`,
-    ``,
-    `// Ben can help with this.`,
-    `// Get in touch to get started.`,
-  ];
-}
-
 export default function Home() {
   const [wordIndex, setWordIndex] = useState(0);
   const [fading, setFading] = useState(false);
-  const [aiInput, setAiInput] = useState("");
-  const [aiSubmitted, setAiSubmitted] = useState(false);
-  const [aiLines, setAiLines] = useState<string[]>([]);
-  const [aiDone, setAiDone] = useState(false);
-
-  function handleAiSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!aiInput.trim() || aiSubmitted) return;
-    setAiSubmitted(true);
-    setAiLines([]);
-    setAiDone(false);
-    const lines = generateLines(aiInput.trim());
-    lines.forEach((line, i) => {
-      setTimeout(() => {
-        setAiLines((prev) => [...prev, line]);
-        if (i === lines.length - 1) setAiDone(true);
-      }, 400 + i * 120);
-    });
-  }
-
   const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
 
   useEffect(() => {
