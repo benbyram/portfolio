@@ -26,7 +26,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div style={{ background: "#fff", color: "#0c0c0c", minHeight: "100vh", position: "relative" }}>
+    <div style={{ background: "#FFFCF7", color: "#0c0c0c", minHeight: "100vh", position: "relative" }}>
 
       {/* Grid background */}
       <div style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none" }}>
@@ -95,7 +95,7 @@ export default function Home() {
         top: 0,
         width: "100%",
         height: "56px",
-        background: "#fff",
+        background: "#FFFCF7",
         zIndex: 50,
         display: "flex",
         alignItems: "center",
