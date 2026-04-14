@@ -375,10 +375,21 @@ export default function Home() {
                     padding: "10px 24px",
                     background: "#0c0c0c",
                     color: "#fff",
+                    border: "1px solid #0c0c0c",
                     fontSize: "12px",
                     letterSpacing: "0.06em",
                     textTransform: "uppercase",
                     fontWeight: 600,
+                  }}
+                  onMouseEnter={e => {
+                    const el = e.currentTarget as HTMLAnchorElement;
+                    el.style.background = "#666";
+                    el.style.borderColor = "#0c0c0c";
+                  }}
+                  onMouseLeave={e => {
+                    const el = e.currentTarget as HTMLAnchorElement;
+                    el.style.background = "#0c0c0c";
+                    el.style.borderColor = "#0c0c0c";
                   }}
                 >
                   Email Me
