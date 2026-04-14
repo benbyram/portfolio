@@ -26,7 +26,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div style={{ background: "#FFFCF7", color: "#0c0c0c", minHeight: "100vh", position: "relative" }}>
+    <div style={{ background: "#FFFCF7", color: "#1E1E1E", minHeight: "100vh", position: "relative" }}>
 
       {/* Grid background */}
       <div style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none" }}>
@@ -53,7 +53,7 @@ export default function Home() {
       <style>{`
         ::selection {
           background: #FFEAC9;
-          color: #0c0c0c;
+          color: #1E1E1E;
         }
 
         @media (max-width: 768px) {
@@ -171,7 +171,7 @@ export default function Home() {
                 style={{
                   display: "inline-block",
                   padding: "10px 24px",
-                  border: "1px solid #0c0c0c",
+                  border: "1px solid #1E1E1E",
                   fontSize: "12px",
                   letterSpacing: "0.06em",
                   textTransform: "uppercase",
@@ -197,9 +197,9 @@ export default function Home() {
         }}>
           <p className="hero-desc" style={{ fontSize: "28px", lineHeight: 1.4, letterSpacing: "-0.02em", maxWidth: "480px", margin: "0 0 40px 0", color: "#555" }}>
             I help companies make the{" "}
-            <span style={{ color: "#0c0c0c" }}>right product</span>
+            <span style={{ color: "#1E1E1E" }}>right product</span>
             {" "}for the{" "}
-            <span style={{ color: "#0c0c0c" }}>right people</span>
+            <span style={{ color: "#1E1E1E" }}>right people</span>
             {" "}— and then actually reach them.
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "32px 48px" }}>
@@ -222,7 +222,7 @@ export default function Home() {
           gridTemplateColumns: "240px 1fr",
         }}>
           <div className="section-label" style={{ padding: "40px", position: "sticky", top: "56px", alignSelf: "start", height: "fit-content" }}>
-            <div style={{ fontSize: "28px", fontWeight: 700, letterSpacing: "-0.02em", textTransform: "uppercase", color: "#0c0c0c" }}>
+            <div style={{ fontSize: "28px", fontWeight: 700, letterSpacing: "-0.02em", textTransform: "uppercase", color: "#1E1E1E" }}>
               Projects
             </div>
           </div>
@@ -279,7 +279,7 @@ export default function Home() {
                   fontWeight: 700,
                   letterSpacing: "-0.03em",
                   whiteSpace: "nowrap",
-                  color: "#0c0c0c",
+                  color: "#1E1E1E",
                   paddingTop: "36px",
                 }}>
                   {project.metric}
@@ -294,7 +294,7 @@ export default function Home() {
       <section id="roles">
         <div className="section-layout" style={{ display: "grid", gridTemplateColumns: "240px 1fr" }}>
           <div className="section-label" style={{ padding: "40px", position: "sticky", top: "56px", alignSelf: "start", height: "fit-content" }}>
-            <div style={{ fontSize: "28px", fontWeight: 700, letterSpacing: "-0.02em", textTransform: "uppercase", color: "#0c0c0c" }}>
+            <div style={{ fontSize: "28px", fontWeight: 700, letterSpacing: "-0.02em", textTransform: "uppercase", color: "#1E1E1E" }}>
               Roles
             </div>
           </div>
@@ -378,9 +378,9 @@ export default function Home() {
                   style={{
                     display: "inline-block",
                     padding: "10px 24px",
-                    background: "#0c0c0c",
+                    background: "#1E1E1E",
                     color: "#fff",
-                    border: "1px solid #0c0c0c",
+                    border: "1px solid #1E1E1E",
                     fontSize: "12px",
                     letterSpacing: "0.06em",
                     textTransform: "uppercase",
@@ -389,12 +389,12 @@ export default function Home() {
                   onMouseEnter={e => {
                     const el = e.currentTarget as HTMLAnchorElement;
                     el.style.background = "#666";
-                    el.style.borderColor = "#0c0c0c";
+                    el.style.borderColor = "#1E1E1E";
                   }}
                   onMouseLeave={e => {
                     const el = e.currentTarget as HTMLAnchorElement;
-                    el.style.background = "#0c0c0c";
-                    el.style.borderColor = "#0c0c0c";
+                    el.style.background = "#1E1E1E";
+                    el.style.borderColor = "#1E1E1E";
                   }}
                 >
                   Email Me
@@ -406,7 +406,7 @@ export default function Home() {
                   style={{
                     display: "inline-block",
                     padding: "10px 24px",
-                    border: "1px solid #0c0c0c",
+                    border: "1px solid #1E1E1E",
                     fontSize: "12px",
                     letterSpacing: "0.06em",
                     textTransform: "uppercase",
