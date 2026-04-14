@@ -196,7 +196,16 @@ export default function Home() {
           justifyContent: "flex-end",
         }}>
           <p className="hero-desc" style={{ fontSize: "28px", lineHeight: 1.4, letterSpacing: "-0.02em", maxWidth: "480px", margin: "0 0 40px 0", color: "#555" }}>
-            I help companies make the{" "}
+            I&apos;m a PM and General Manager at{" "}
+            <a
+              href="https://cofounder.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "#1E1E1E", textDecoration: "none" }}
+              onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = "#51A3A3"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.color = "#1E1E1E"; }}
+            >CoFounder.AI</a>
+            {". "}I help companies build the{" "}
             <span style={{ color: "#1E1E1E" }}>right product</span>
             {" "}for the{" "}
             <span style={{ color: "#1E1E1E" }}>right people</span>
