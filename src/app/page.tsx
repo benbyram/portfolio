@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 
-const CYCLING_WORDS = ["Startups", "Creator Companies", "Non-Profits", "Universities", "Small Businesses"];
+const CYCLING_WORDS = ["Startups", "Creator Companies", "Non-Profits"];
 
 function generateLines(input: string): string[] {
   const short = input.length > 48 ? input.slice(0, 48) + "..." : input;
@@ -95,6 +95,29 @@ export default function Home() {
       {/* Content wrapper */}
       <div style={{ position: "relative", zIndex: 1 }}>
 
+      {/* Mobile responsive styles */}
+      <style>{`
+        @media (max-width: 768px) {
+          .nav-bar { padding: 0 16px !important; }
+          .nav-bar > div:first-child { font-size: 14px !important; }
+          .nav-links { gap: 12px !important; }
+          .nav-links a { font-size: 10px !important; letter-spacing: 0.03em !important; }
+          .hero-section { grid-template-columns: 1fr !important; }
+          .hero-left { padding: 40px 20px 24px !important; min-height: unset !important; }
+          .hero-right { padding: 0 20px 56px !important; justify-content: flex-start !important; }
+          .hero-desc { font-size: 20px !important; margin-bottom: 24px !important; }
+          .section-layout { grid-template-columns: 1fr !important; }
+          .section-label { padding: 40px 20px 0 !important; position: static !important; height: auto !important; }
+          .project-row { flex-direction: column !important; padding: 32px 20px !important; gap: 12px !important; }
+          .project-metric { padding-top: 0 !important; font-size: 26px !important; }
+          .role-row { padding: 32px 20px !important; }
+          .role-row h3 { font-size: 26px !important; }
+          .contact-content { padding: 32px 20px 60px !important; }
+          .contact-inner-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .contact-inner-grid h2 { font-size: 48px !important; }
+        }
+      `}</style>
+
       {/* SVG ink-trap filter */}
       <svg style={{ position: "absolute", width: 0, height: 0 }}>
         <defs>
@@ -113,7 +136,7 @@ export default function Home() {
       </svg>
 
       {/* Navigation */}
-      <nav style={{
+      <nav className="nav-bar" style={{
         position: "fixed",
         top: 0,
         width: "100%",
@@ -125,11 +148,11 @@ export default function Home() {
         padding: "0 40px",
         justifyContent: "space-between",
       }}>
-        <div style={{ fontWeight: 700, fontSize: "14px", letterSpacing: "0.05em", textTransform: "uppercase" }}>
+        <div style={{ fontWeight: 700, fontSize: "18px", letterSpacing: "0.05em", textTransform: "uppercase" }}>
           Ben Byram
         </div>
-        <div style={{ display: "flex", gap: "40px" }}>
-          {["About", "Services", "Projects", "Contact"].map((item) => (
+        <div className="nav-links" style={{ display: "flex", gap: "40px" }}>
+          {["Projects", "Roles", "Contact"].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
@@ -142,12 +165,12 @@ export default function Home() {
       </nav>
 
       {/* Hero */}
-      <section style={{
+      <section className="hero-section" style={{
         paddingTop: "56px",
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
       }}>
-        <div style={{
+        <div className="hero-left" style={{
           padding: "80px 40px 80px 40px",
           display: "flex",
           flexDirection: "column",
@@ -182,7 +205,7 @@ export default function Home() {
                   display: "inline-block",
                   color: "#555",
                 }}>
-                  {CYCLING_WORDS[wordIndex]}
+                  {CYCLING_WORDS[wordIndex % CYCLING_WORDS.length]}
                 </span>
               </span>
             </h1>
@@ -192,45 +215,36 @@ export default function Home() {
                 style={{
                   display: "inline-block",
                   padding: "10px 24px",
-                  background: "#0c0c0c",
-                  color: "#fff",
-                  fontSize: "12px",
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
-                  fontWeight: 600,
-                }}
-              >
-                Get In Touch
-              </a>
-              <a
-                href="#projects"
-                style={{
-                  display: "inline-block",
-                  padding: "10px 24px",
                   border: "1px solid #0c0c0c",
                   fontSize: "12px",
                   letterSpacing: "0.06em",
                   textTransform: "uppercase",
                   fontWeight: 600,
                 }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLAnchorElement).style.color = "#ff00ff";
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLAnchorElement).style.color = "inherit";
+                }}
               >
-                View Work
+                Get In Touch
               </a>
             </div>
           </div>
         </div>
-        <div style={{
+        <div className="hero-right" style={{
           padding: "80px 40px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
         }}>
-          <p style={{ fontSize: "28px", lineHeight: 1.4, letterSpacing: "-0.02em", maxWidth: "480px", margin: "0 0 40px 0", color: "#555" }}>
+          <p className="hero-desc" style={{ fontSize: "28px", lineHeight: 1.4, letterSpacing: "-0.02em", maxWidth: "480px", margin: "0 0 40px 0", color: "#555" }}>
             I help companies make the{" "}
             <span style={{ color: "#0c0c0c" }}>right product</span>
             {" "}for the{" "}
             <span style={{ color: "#0c0c0c" }}>right people</span>
-            {" "}and actually reach them.
+            {" "}— and then actually reach them.
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "32px 48px" }}>
             <div>
@@ -245,161 +259,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* AI Input */}
-      <section style={{ padding: "80px 40px" }}>
-        <div style={{ maxWidth: "680px", margin: "0 auto" }}>
-          <div style={{
-            fontSize: "11px",
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            color: "#666",
-            marginBottom: "24px",
-            textAlign: "center",
-          }}>
-            What can Ben help you with today?
-          </div>
-          <form onSubmit={handleAiSubmit}>
-            <div style={{
-              display: "flex",
-              border: "1px solid #0c0c0c",
-              background: "#fff",
-            }}>
-              <input
-                type="text"
-                value={aiInput}
-                onChange={(e) => setAiInput(e.target.value)}
-                placeholder="e.g. I need a product strategy for my early-stage startup..."
-                disabled={aiSubmitted}
-                style={{
-                  flex: 1,
-                  padding: "20px 24px",
-                  fontSize: "16px",
-                  letterSpacing: "-0.01em",
-                  border: "none",
-                  outline: "none",
-                  background: "transparent",
-                  fontFamily: "inherit",
-                  color: "#0c0c0c",
-                }}
-              />
-              <button
-                type="submit"
-                disabled={aiSubmitted || !aiInput.trim()}
-                style={{
-                  padding: "20px 28px",
-                  background: aiSubmitted ? "#eee" : "#0c0c0c",
-                  color: aiSubmitted ? "#999" : "#fff",
-                  border: "none",
-                  cursor: aiSubmitted ? "default" : "pointer",
-                  fontSize: "11px",
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  fontWeight: 600,
-                  fontFamily: "inherit",
-                  transition: "background 0.2s",
-                }}
-              >
-                {aiSubmitted ? "Running" : "Build"}
-              </button>
-            </div>
-          </form>
-
-          {aiLines.length > 0 && (
-            <div style={{
-              marginTop: "0px",
-              border: "1px solid #0c0c0c",
-              borderTop: "none",
-              background: "#0c0c0c",
-              padding: "24px",
-              minHeight: "160px",
-            }}>
-              {aiLines.map((line, i) => (
-                <div key={i} style={{
-                  fontFamily: "monospace",
-                  fontSize: "13px",
-                  lineHeight: 1.7,
-                  color: line.startsWith("//") ? "#888"
-                       : line.startsWith(">") ? "#ccc"
-                       : line === "" ? undefined
-                       : "#e8e8e8",
-                  whiteSpace: "pre",
-                }}>
-                  {line || "\u00A0"}
-                </div>
-              ))}
-              {!aiDone && (
-                <span style={{
-                  display: "inline-block",
-                  width: "8px",
-                  height: "14px",
-                  background: "#fff",
-                  marginTop: "4px",
-                  animation: "blink 1s step-end infinite",
-                }} />
-              )}
-              {aiDone && (
-                <div style={{ marginTop: "20px", borderTop: "1px solid #333", paddingTop: "20px" }}>
-                  <a
-                    href="#contact"
-                    style={{
-                      fontSize: "11px",
-                      letterSpacing: "0.08em",
-                      textTransform: "uppercase",
-                      fontWeight: 600,
-                      color: "#fff",
-                      border: "1px solid #555",
-                      padding: "10px 20px",
-                      textDecoration: "none",
-                      marginRight: "12px",
-                    }}
-                  >
-                    Get in Touch
-                  </a>
-                  <button
-                    onClick={() => { setAiSubmitted(false); setAiInput(""); setAiLines([]); setAiDone(false); }}
-                    style={{
-                      fontSize: "11px",
-                      letterSpacing: "0.08em",
-                      textTransform: "uppercase",
-                      fontWeight: 600,
-                      color: "#666",
-                      background: "none",
-                      border: "none",
-                      cursor: "pointer",
-                      fontFamily: "inherit",
-                      padding: 0,
-                    }}
-                  >
-                    Try another
-                  </button>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      </section>
-
       {/* Projects */}
       <section id="projects">
-        <div style={{
+        <div className="section-layout" style={{
           display: "grid",
           gridTemplateColumns: "240px 1fr",
         }}>
-          <div style={{ padding: "40px" }}>
-            <div style={{ fontSize: "11px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#666" }}>
+          <div className="section-label" style={{ padding: "40px", position: "sticky", top: "56px", alignSelf: "start", height: "fit-content" }}>
+            <div style={{ fontSize: "28px", fontWeight: 700, letterSpacing: "-0.02em", textTransform: "uppercase", color: "#0c0c0c" }}>
               Projects
             </div>
           </div>
           <div>
             {[
               {
-                category: "Kaizen",
+                category: "Kaizen Place",
                 title: "Fan Powered Tour Pages",
                 desc: "First-to-market Kickstarter-style presale tool for independent artists. Built it from zero. First artist to use it generated $40k before playing a single show.",
                 metric: "$40k presale",
               },
               {
-                category: "Kaizen",
+                category: "Kaizen Place",
                 title: "Early Access Music Funnels",
                 desc: "Designed a campaign workflow that let independent artists make a year's worth of Spotify revenue in 10 days. Not a typo.",
                 metric: "10-day ROI",
@@ -417,42 +297,34 @@ export default function Home() {
                 metric: "17k downloads",
               },
               {
-                category: "CoFounder.AI",
-                title: "AI Creator Research Pipeline",
-                desc: "Built an agentic pipeline that discovers, enriches, and scores YouTube creators for outreach — routed directly into Notion. No humans in the loop.",
-                metric: "0 humans",
-              },
-              {
                 category: "Side Project",
                 title: "Godspeed Coworking Platform",
-                desc: "Vibe-coded a text broadcast + event management tool for my in-person coworking group. Twilio integration. Built it in Cursor because the tools that existed were overkill.",
-                metric: "Built in Cursor",
+                desc: "Text broadcasts, event pages, signups — everything I need to run my in-person coworking community of 50+ people. Built, designed, and shipped solo.",
+                metric: "50+ members",
               },
             ].map((project, i) => (
-              <div key={project.title} style={{
-                display: "grid",
-                gridTemplateColumns: "1fr auto",
-                alignItems: "start",
+              <div key={project.title} className="project-row" style={{
+                display: "flex",
+                alignItems: "flex-start",
                 padding: "56px 60px",
-                gap: "60px",
+                gap: "140px",
               }}>
                 <div>
-                  <div style={{ fontSize: "13px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#666", marginBottom: "16px" }}>
-                    {project.category}
-                  </div>
                   <h3 style={{ fontSize: "34px", fontWeight: 700, letterSpacing: "-0.03em", marginBottom: "16px" }}>
                     {project.title}
                   </h3>
                   <p style={{ fontSize: "18px", lineHeight: 1.6, color: "#444", maxWidth: "620px" }}>
-                    {project.desc}
+                    {project.desc}{" "}
+                    <span style={{ fontSize: "13px", color: "#aaa", fontWeight: 400, letterSpacing: "0.02em", whiteSpace: "nowrap" }}>— {project.category}</span>
                   </p>
                 </div>
-                <div style={{
-                  fontSize: "42px",
+                <div className="project-metric" style={{
+                  fontSize: "34px",
                   fontWeight: 700,
                   letterSpacing: "-0.03em",
                   whiteSpace: "nowrap",
                   color: "#0c0c0c",
+                  paddingTop: "36px",
                 }}>
                   {project.metric}
                 </div>
@@ -462,38 +334,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Experience */}
-      <section id="experience">
-        <div style={{ display: "grid", gridTemplateColumns: "240px 1fr" }}>
-          <div style={{ padding: "40px" }}>
-            <div style={{ fontSize: "11px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#666" }}>
-              Experience
+      {/* Roles */}
+      <section id="roles">
+        <div className="section-layout" style={{ display: "grid", gridTemplateColumns: "240px 1fr" }}>
+          <div className="section-label" style={{ padding: "40px", position: "sticky", top: "56px", alignSelf: "start", height: "fit-content" }}>
+            <div style={{ fontSize: "28px", fontWeight: 700, letterSpacing: "-0.02em", textTransform: "uppercase", color: "#0c0c0c" }}>
+              Roles
             </div>
           </div>
           <div>
             {[
               {
-                role: "Founding PM & GM",
+                role: "PM, Creator Economy",
+                current: true,
                 company: "CoFounder.AI",
-                desc: "Built the product 0→1 for an AI platform helping entrepreneurs find co-founders and launch companies. Owned product strategy, roadmap, and business operations.",
+                desc: "Democratizing entrepreneurship by giving every solopreneur and small business owner an AI cofounder and a team of AI specialists purpose-built for their business.",
               },
               {
                 role: "Co-Founder & Head of Product",
-                company: "kaizen.place",
-                desc: "Co-founded and led product for a continuous improvement platform for teams. Drove full product vision from concept through launch.",
+                company: "Kaizen Place",
+                desc: "Built a direct-to-fan monetization platform used by 1,400+ artists and 300,000+ fans.",
               },
               {
                 role: "Product Manager",
                 company: "Dubsado",
-                desc: "PM on core product at a leading CRM and business management platform for freelancers and small businesses.",
+                desc: "Led strategy across Payments, Projects & Clients, and Mobile — delivering workflow and payment solutions to 150k+ SMB owners.",
               },
               {
                 role: "UX Designer",
                 company: "Social Curator",
-                desc: "Designed user interfaces and experiences for a social media content and marketing platform.",
+                desc: "Led product design for social media marketing and workflow tools used by 7,000+ business owners.",
               },
             ].map((job) => (
-              <div key={job.company} style={{
+              <div key={job.company} className="role-row" style={{
                 display: "grid",
                 gridTemplateColumns: "1fr auto",
                 alignItems: "start",
@@ -501,11 +374,13 @@ export default function Home() {
                 gap: "60px",
               }}>
                 <div>
-                  <div style={{ fontSize: "13px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#666", marginBottom: "16px" }}>
+                  <div style={{ fontSize: "16px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#666", marginBottom: "16px" }}>
                     {job.company}
                   </div>
                   <h3 style={{ fontSize: "34px", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "16px" }}>
-                    {job.role}
+                    {job.role}{"current" in job && job.current && (
+                      <span style={{ fontSize: "22px", fontWeight: 400, color: "#555", marginLeft: "12px", letterSpacing: "0" }}>(current)</span>
+                    )}
                   </h3>
                   <p style={{ fontSize: "18px", lineHeight: 1.6, color: "#444", maxWidth: "620px" }}>
                     {job.desc}
@@ -519,26 +394,35 @@ export default function Home() {
 
       {/* Contact */}
       <section id="contact">
-        <div style={{
+        <div className="section-layout" style={{
           display: "grid",
           gridTemplateColumns: "240px 1fr",
         }}>
-          <div style={{ padding: "40px" }}>
+          <div className="section-label" style={{ padding: "40px" }}>
             <div style={{ fontSize: "11px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#666" }}>
               Contact
             </div>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
-            <div style={{ padding: "40px" }}>
-              <h2 style={{ fontSize: "36px", fontWeight: 700, letterSpacing: "-0.03em", marginBottom: "20px", lineHeight: 1.1 }}>
-                Let&apos;s Work<br />Together
-              </h2>
-              <p style={{ fontSize: "15px", lineHeight: 1.6, color: "#444", marginBottom: "32px" }}>
-                Ready to accelerate your product development? Available for contract consulting and full-time product management opportunities.
-              </p>
-              <div style={{ display: "flex", gap: "16px" }}>
+          <div className="contact-content" style={{ padding: "40px 60px 80px" }}>
+            <h2 style={{ fontSize: "clamp(48px, 6vw, 88px)", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.0, marginBottom: "48px" }}>
+              Let&apos;s Work<br />Together
+            </h2>
+            <div className="contact-inner-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "start" }}>
+              <div>
+                <div style={{ fontSize: "11px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#666", marginBottom: "16px" }}>
+                  Contract Consulting
+                </div>
+                <div style={{ fontSize: "15px", lineHeight: 2.2, color: "#444" }}>
+                  <div>Product Strategy</div>
+                  <div>Custom 0→1 Product Builds</div>
+                  <div>AI Implementation &amp; Consulting</div>
+                  <div>Fractional Product Leadership</div>
+                  <div>Growth Funnel Optimization</div>
+                </div>
+              </div>
+              <div style={{ display: "flex", gap: "16px", alignItems: "flex-start", paddingTop: "8px" }}>
                 <a
-                  href="mailto:ben@example.com"
+                  href="mailto:benbyram@gmail.com"
                   style={{
                     display: "inline-block",
                     padding: "10px 24px",
@@ -570,30 +454,6 @@ export default function Home() {
                 </a>
               </div>
             </div>
-            <div style={{ display: "grid", gridTemplateRows: "1fr 1fr" }}>
-              <div style={{ padding: "40px" }}>
-                <div style={{ fontSize: "11px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#666", marginBottom: "16px" }}>
-                  Contract Consulting
-                </div>
-                <div style={{ fontSize: "13px", lineHeight: 2, color: "#444" }}>
-                  <div>Product Strategy &amp; Roadmapping</div>
-                  <div>UX Research &amp; Design</div>
-                  <div>Process Optimization</div>
-                  <div>Team Training &amp; Mentoring</div>
-                </div>
-              </div>
-              <div style={{ padding: "40px" }}>
-                <div style={{ fontSize: "11px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#666", marginBottom: "16px" }}>
-                  Full-Time Opportunities
-                </div>
-                <div style={{ fontSize: "13px", lineHeight: 2, color: "#444" }}>
-                  <div>Senior Product Manager</div>
-                  <div>Head of Product</div>
-                  <div>Product Strategy Lead</div>
-                  <div>VP of Product</div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -602,17 +462,11 @@ export default function Home() {
       <footer style={{
         padding: "24px 40px",
         display: "flex",
-        justifyContent: "space-between",
+        justifyContent: "flex-start",
         alignItems: "center",
       }}>
         <div style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" }}>
           Ben Byram
-        </div>
-        <div style={{ fontSize: "12px", color: "#666", letterSpacing: "0.02em" }}>
-          © 2024 Ben Byram
-        </div>
-        <div style={{ fontSize: "11px", letterSpacing: "0.06em", textTransform: "uppercase", color: "#666" }}>
-          Product Strategy &amp; UX Consulting
         </div>
       </footer>
 
