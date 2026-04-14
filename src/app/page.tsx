@@ -49,8 +49,13 @@ export default function Home() {
       {/* Content wrapper */}
       <div style={{ position: "relative", zIndex: 1 }}>
 
-      {/* Mobile responsive styles */}
+      {/* Global styles */}
       <style>{`
+        ::selection {
+          background: #FFEAC9;
+          color: #0c0c0c;
+        }
+
         @media (max-width: 768px) {
           .nav-bar { padding: 0 16px !important; }
           .nav-bar > div:first-child { font-size: 14px !important; }
