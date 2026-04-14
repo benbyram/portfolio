@@ -201,9 +201,9 @@ export default function Home() {
               href="https://cofounder.ai"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: "#1E1E1E", textDecoration: "none" }}
-              onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = "#51A3A3"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.color = "#1E1E1E"; }}
+              style={{ color: "#51A3A3", textDecoration: "none" }}
+              onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = "#1E1E1E"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.color = "#51A3A3"; }}
             >CoFounder.AI</a>
             {". "}I help companies build the{" "}
             <span style={{ color: "#1E1E1E" }}>right product</span>
@@ -313,21 +313,25 @@ export default function Home() {
                 role: "PM, Creator Economy",
                 current: true,
                 company: "CoFounder.AI",
+                url: "https://cofounder.ai",
                 desc: "Democratizing entrepreneurship by giving every solopreneur and small business owner an AI cofounder and a team of AI specialists purpose-built for their business.",
               },
               {
                 role: "Co-Founder & Head of Product",
                 company: "Kaizen Place",
+                url: "https://kaizen.place/for-artists",
                 desc: "Built a direct-to-fan monetization platform used by 1,400+ artists and 300,000+ fans.",
               },
               {
                 role: "Product Manager",
                 company: "Dubsado",
+                url: "https://www.dubsado.com/",
                 desc: "Led strategy across Payments, Projects & Clients, and Mobile — delivering workflow and payment solutions to 150k+ SMB owners.",
               },
               {
                 role: "UX Designer",
                 company: "Social Curator",
+                url: "https://www.socialcurator.com/",
                 desc: "Led product design for social media marketing and workflow tools used by 7,000+ business owners.",
               },
             ].map((job) => (
@@ -339,8 +343,15 @@ export default function Home() {
                 gap: "60px",
               }}>
                 <div>
-                  <div style={{ fontSize: "16px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#666", marginBottom: "16px" }}>
-                    {job.company}
+                  <div style={{ fontSize: "16px", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "16px" }}>
+                    <a
+                      href={job.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: "#51A3A3", textDecoration: "none" }}
+                      onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = "#1E1E1E"; }}
+                      onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.color = "#51A3A3"; }}
+                    >{job.company}</a>
                   </div>
                   <h3 style={{ fontSize: "34px", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: "16px" }}>
                     {job.role}{"current" in job && job.current && (
