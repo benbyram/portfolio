@@ -144,7 +144,7 @@ export default function Home() {
               letterSpacing: "-0.04em",
               margin: "0 0 32px 0",
             }}>
-              Product<br />Leadership<br />&amp; AI<br />Consulting
+              Product<br />Leader<br />&amp; AI<br />Consultant
               <br />
               <span style={{
                 fontSize: "0.5em",
