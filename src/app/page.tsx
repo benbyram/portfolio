@@ -352,11 +352,7 @@ export default function Home() {
           display: "grid",
           gridTemplateColumns: "240px 1fr",
         }}>
-          <div className="section-label" style={{ padding: "40px" }}>
-            <div style={{ fontSize: "11px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#666" }}>
-              Contact
-            </div>
-          </div>
+          <div className="section-label" style={{ padding: "40px" }} />
           <div className="contact-content" style={{ padding: "40px 60px 80px" }}>
             <h2 style={{ fontSize: "clamp(48px, 6vw, 88px)", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.0, marginBottom: "48px" }}>
               Let&apos;s Work<br />Together
@@ -412,17 +408,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer style={{
-        padding: "24px 40px",
-        display: "flex",
-        justifyContent: "flex-start",
-        alignItems: "center",
-      }}>
-        <div style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" }}>
-          Ben Byram
-        </div>
-      </footer>
 
       </div>{/* end content wrapper */}
     </div>
