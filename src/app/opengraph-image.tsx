@@ -37,7 +37,7 @@ export default function Image() {
             Product Leader<br />& AI Consultant
           </div>
           <div style={{ fontSize: "24px", color: "#555", letterSpacing: "0.02em" }}>
-            benbyram.com
+            benjaminbyram.me
           </div>
         </div>
       </div>
