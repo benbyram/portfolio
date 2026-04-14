@@ -131,9 +131,6 @@ export default function Home() {
           justifyContent: "space-between",
           minHeight: "480px",
         }}>
-          <div style={{ fontSize: "11px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#666" }}>
-            Available for Work
-          </div>
           <div>
             <h1 style={{
               fontSize: "clamp(48px, 6vw, 88px)",
