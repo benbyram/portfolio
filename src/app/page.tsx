@@ -217,8 +217,8 @@ export default function Home() {
               <div style={{ fontSize: "11px", letterSpacing: "0.06em", textTransform: "uppercase", marginTop: "6px", color: "#666" }}>Business owners & creators actively using products I built</div>
             </div>
             <div>
-              <div style={{ fontSize: "36px", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1 }}>17k+</div>
-              <div style={{ fontSize: "11px", letterSpacing: "0.06em", textTransform: "uppercase", marginTop: "6px", color: "#666" }}>Downloads of my apps · 5-star rating</div>
+              <div style={{ fontSize: "36px", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1 }}>2.5M+</div>
+              <div style={{ fontSize: "11px", letterSpacing: "0.06em", textTransform: "uppercase", marginTop: "6px", color: "#666" }}>End users served across products I&apos;ve built</div>
             </div>
           </div>
         </div>
