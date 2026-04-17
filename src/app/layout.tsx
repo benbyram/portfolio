@@ -25,6 +25,9 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://benbyram.com",
   },
+  other: {
+    "theme-color": "#FFFCF7",
+  },
   twitter: {
     card: "summary_large_image",
     title: "Ben Byram — Product Leader & AI Consultant",
