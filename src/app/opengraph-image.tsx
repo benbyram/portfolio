@@ -57,7 +57,7 @@ export default async function Image() {
               fontFamily: "Inter",
             }}
           >
-            benjaminbyram.me
+            benbyram.com
           </div>
         </div>
       </div>

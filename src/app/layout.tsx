@@ -15,7 +15,7 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://benjaminbyram.me"),
+  metadataBase: new URL("https://benbyram.com"),
   title: "Ben Byram — Product Leader & AI Consultant",
   description: "PM and General Manager at CoFounder.AI. I help companies build the right product for the right people — and then actually reach them.",
   authors: [{ name: "Ben Byram" }],
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "Ben Byram — Product Leader & AI Consultant",
     description: "PM and General Manager at CoFounder.AI. I help companies build the right product for the right people — and then actually reach them.",
     type: "website",
-    url: "https://benjaminbyram.me",
+    url: "https://benbyram.com",
   },
   twitter: {
     card: "summary_large_image",
