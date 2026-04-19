@@ -215,6 +215,15 @@ export default function Home() {
           color: #1E1E1E;
         }
 
+        /* Tablet */
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .hero-right { padding: 20px 24px 60px 12px !important; }
+          .hero-photo-row { gap: 20px !important; }
+          .hero-photo-row img { width: 200px !important; }
+          .hero-desc { font-size: 22px !important; max-width: none !important; }
+        }
+
+        /* Mobile */
         @media (max-width: 768px) {
           .nav-bar { padding: 0 16px !important; }
           .nav-bar > div:first-child { font-size: 14px !important; }
@@ -223,7 +232,9 @@ export default function Home() {
           .hero-section { grid-template-columns: 1fr !important; }
           .hero-left { padding: 40px 20px 24px !important; min-height: unset !important; }
           .hero-right { padding: 0 20px 56px !important; justify-content: flex-start !important; }
-          .hero-desc { font-size: 20px !important; margin-bottom: 24px !important; }
+          .hero-photo-row { flex-direction: column !important; align-items: flex-start !important; gap: 20px !important; }
+          .hero-photo-row img { width: 100% !important; height: auto !important; }
+          .hero-desc { font-size: 20px !important; max-width: 100% !important; margin-bottom: 24px !important; }
           .section-layout { grid-template-columns: 1fr !important; }
           .section-label { padding: 40px 20px 0 !important; position: static !important; height: auto !important; }
           .project-row { flex-direction: column !important; padding: 32px 20px !important; gap: 12px !important; }
@@ -355,27 +366,34 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-right" style={{
-          padding: "80px 40px",
+          padding: "20px 40px 80px 16px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
         }}>
-          <p className="hero-desc" style={{ fontSize: "28px", lineHeight: 1.4, letterSpacing: "-0.02em", maxWidth: "480px", margin: "0 0 40px 0", color: "#555" }}>
-            I&apos;m a PM and General Manager at{" "}
-            <a
-              href="https://cofounder.ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "#51A3A3", textDecoration: "none" }}
-              onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = "#1E1E1E"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.color = "#51A3A3"; }}
-            >CoFounder.AI</a>
-            {". "}I help companies build the{" "}
-            <span style={{ color: "#1E1E1E" }}>right product</span>
-            {" "}for the{" "}
-            <span style={{ color: "#1E1E1E" }}>right people</span>
-            {" "}— and then actually reach them.
-          </p>
+          <div className="hero-photo-row" style={{ display: "flex", alignItems: "flex-end", gap: "28px", marginBottom: "40px" }}>
+            <img
+              src="/benbyramheadshot4.jpg"
+              alt="Ben Byram"
+              style={{ width: "285px", height: "auto", flexShrink: 0, display: "block" }}
+            />
+            <p className="hero-desc" style={{ fontSize: "28px", lineHeight: 1.4, letterSpacing: "-0.02em", margin: "0", maxWidth: "324px", color: "#555" }}>
+              I&apos;m a PM and General Manager at{" "}
+              <a
+                href="https://cofounder.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "#51A3A3", textDecoration: "none" }}
+                onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = "#1E1E1E"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.color = "#51A3A3"; }}
+              >CoFounder.AI</a>
+              {". "}I help companies build the{" "}
+              <span style={{ color: "#1E1E1E" }}>right product</span>
+              {" "}for the{" "}
+              <span style={{ color: "#1E1E1E" }}>right people</span>
+              {" "}— and then actually reach them.
+            </p>
+          </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "32px 48px" }}>
             <div>
               <div style={{ fontSize: "36px", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1 }}>200k+</div>
