@@ -397,11 +397,11 @@ export default function Home() {
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "32px 48px" }}>
             <div>
               <div style={{ fontSize: "36px", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1 }}>200k+</div>
-              <div style={{ fontSize: "11px", letterSpacing: "0.06em", textTransform: "uppercase", marginTop: "6px", color: "#666" }}>Business owners & creators actively using products I built</div>
+              <div style={{ fontSize: "11px", letterSpacing: "0.06em", textTransform: "uppercase", marginTop: "6px", color: "#666", maxWidth: "230px" }}>Business owners & creators actively using products I built</div>
             </div>
             <div>
               <div style={{ fontSize: "36px", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1 }}>2.5M+</div>
-              <div style={{ fontSize: "11px", letterSpacing: "0.06em", textTransform: "uppercase", marginTop: "6px", color: "#666" }}>End users served across products I&apos;ve built</div>
+              <div style={{ fontSize: "11px", letterSpacing: "0.06em", textTransform: "uppercase", marginTop: "6px", color: "#666", maxWidth: "230px" }}>End users served across products I&apos;ve built</div>
             </div>
           </div>
         </div>
