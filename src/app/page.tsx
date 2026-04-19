@@ -1,7 +1,166 @@
 "use client";
 import { useState, useEffect } from "react";
 
-const CYCLING_WORDS = ["Startups", "Creator Companies", "Non-Profits"];
+const CYCLING_WORDS = ["Startups", "Creator Companies", "Non-Profits", "Universities"];
+
+const ENGAGEMENTS = [
+  {
+    type: "AI Consulting",
+    format: "Workshop Series",
+    org: "Johns Hopkins University",
+    subtitle: "Carey Business School",
+    quote: "How the next generation of leaders will build with AI.",
+    desc: "Delivered AI strategy consulting for MBA students at one of the country's top business programs — helping the next generation of leaders understand how to build and deploy AI in their organizations.",
+    audience: "MBA Students",
+    tags: ["AI Strategy", "Product Adoption", "Leadership"],
+    logo: "/carey.logo.horizontal.blue.png",
+    logoWidth: 220,
+  },
+  {
+    type: "AI Speaking",
+    format: "Expert Panelist",
+    org: "Convene",
+    subtitle: "Christian business leaders organization",
+    quote: "Building with AI — and with purpose.",
+    desc: "Expert panelist on AI for Convene, a national organization of Christian entrepreneurs and business leaders — covering practical AI adoption, ethics, and building with purpose.",
+    audience: "Christian Entrepreneurs",
+    tags: ["Practical AI", "Ethics", "Purpose-Driven Building"],
+    logo: "/CONVENE_LOGO.webp",
+    logoWidth: 160,
+  },
+  {
+    type: "Coming Soon",
+    format: "TBD",
+    org: "More to Share",
+    subtitle: "Check back soon",
+    quote: "More engagements on the way.",
+    desc: "Additional speaking and consulting engagements coming soon.",
+    audience: "TBD",
+    tags: [],
+  },
+];
+
+function EngagementsCarousel() {
+  return (
+    <section>
+      <div className="section-layout" style={{ display: "grid", gridTemplateColumns: "240px 1fr" }}>
+        <div className="section-label" style={{ padding: "40px", position: "sticky", top: "56px", alignSelf: "start", height: "fit-content" }}>
+          <div className="ai-section-title" style={{ fontSize: "28px", fontWeight: 700, letterSpacing: "-0.02em", textTransform: "uppercase", color: "#1E1E1E" }}>
+            AI<br />{" "}Consulting<br />{" "}&amp;<br />{" "}Speaking
+          </div>
+        </div>
+        <div>
+          {ENGAGEMENTS.filter(e => e.tags.length > 0).map((e) => (
+            <div key={e.org} className="project-row" style={{
+              display: "flex",
+              alignItems: "flex-start",
+              padding: "56px 60px",
+              gap: "60px",
+            }}>
+              <div>
+                {/* Logo shown only on mobile, above the content */}
+                {"logo" in e && e.logo && (
+                  <img
+                    className="engagement-logo-mobile"
+                    src={e.logo as string}
+                    alt={e.org}
+                    style={{ display: "none", maxWidth: `${"logoWidth" in e ? e.logoWidth : 160}px`, width: "100%", objectFit: "contain", objectPosition: "left center", marginBottom: "20px" }}
+                  />
+                )}
+                <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+                  <span style={{ fontSize: "11px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#51A3A3", fontWeight: 700 }}>{e.type}</span>
+                  <span style={{ color: "#ccc" }}>·</span>
+                  <span style={{ fontSize: "11px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#aaa" }}>{e.format}</span>
+                </div>
+                <h3 style={{ fontSize: "34px", fontWeight: 700, letterSpacing: "-0.03em", marginBottom: "6px" }}>
+                  {e.org}
+                </h3>
+                <div style={{ fontSize: "14px", color: "#888", fontStyle: "italic", marginBottom: "20px", fontFamily: "Georgia, serif", fontWeight: 400 }}>
+                  {e.subtitle}
+                </div>
+                <blockquote style={{
+                  borderLeft: "3px solid #ff00ff",
+                  paddingLeft: "16px",
+                  margin: "0 0 20px 0",
+                  fontSize: "17px",
+                  lineHeight: 1.5,
+                  color: "#1E1E1E",
+                  fontWeight: 500,
+                }}>
+                  &ldquo;{e.quote}&rdquo;
+                </blockquote>
+                <p style={{ fontSize: "18px", lineHeight: 1.6, color: "#444", maxWidth: "620px", marginBottom: "20px" }}>
+                  {e.desc}
+                </p>
+                <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+                  {e.tags.map((tag) => (
+                    <span key={tag} style={{
+                      fontSize: "10px",
+                      letterSpacing: "0.08em",
+                      textTransform: "uppercase",
+                      border: "1px solid #ccc",
+                      padding: "4px 10px",
+                      color: "#666",
+                    }}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="project-metric engagement-meta" style={{
+                color: "#1E1E1E",
+                paddingLeft: "60px",
+                paddingTop: "34px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "24px",
+                minWidth: "200px",
+              }}>
+                {/* Logo shown only on desktop */}
+                {"logo" in e && e.logo && (
+                  <img
+                    className="engagement-logo-desktop"
+                    src={e.logo as string}
+                    alt={e.org}
+                    style={{ maxWidth: `${"logoWidth" in e ? e.logoWidth : 160}px`, width: "100%", objectFit: "contain", objectPosition: "left center" }}
+                  />
+                )}
+                <div className="engagement-audience-format" style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+                  <div>
+                    <div style={{ fontSize: "10px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#aaa", marginBottom: "6px", fontWeight: 400 }}>Audience</div>
+                    <div style={{ fontSize: "18px", fontWeight: 700, letterSpacing: "-0.02em" }}>{e.audience}</div>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: "10px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#aaa", marginBottom: "6px", fontWeight: 400 }}>Format</div>
+                    <div style={{ fontSize: "18px", fontWeight: 700, letterSpacing: "-0.02em" }}>{e.format}</div>
+                  </div>
+                </div>
+                <a
+                  href="#contact"
+                  style={{
+                    fontSize: "11px",
+                    letterSpacing: "0.06em",
+                    textTransform: "uppercase",
+                    fontWeight: 700,
+                    color: "#1E1E1E",
+                    borderBottom: "1px solid #1E1E1E",
+                    paddingBottom: "2px",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    width: "fit-content",
+                  }}
+                >
+                  Book a Session →
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function Home() {
   const [wordIndex, setWordIndex] = useState(0);
@@ -74,6 +233,12 @@ export default function Home() {
           .contact-content { padding: 32px 20px 60px !important; }
           .contact-inner-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .contact-inner-grid h2 { font-size: 48px !important; }
+          .engagement-logo-mobile { display: block !important; }
+          .engagement-logo-desktop { display: none !important; }
+          .engagement-meta { padding-left: 0 !important; padding-top: 0 !important; }
+          .engagement-audience-format { flex-direction: row !important; gap: 32px !important; }
+          .ai-section-title { font-size: 28px !important; }
+          .ai-section-title br { display: none; }
         }
       `}</style>
 
@@ -111,7 +276,7 @@ export default function Home() {
           Ben Byram
         </div>
         <div className="nav-links" style={{ display: "flex", gap: "40px" }}>
-          {["Projects", "Roles", "Contact"].map((item) => (
+          {["AI Consulting", "Projects", "Roles", "Contact"].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
@@ -224,6 +389,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* AI Consulting & Speaking */}
+      <div id="ai consulting">
+        <EngagementsCarousel />
+      </div>
+
       {/* Projects */}
       <section id="projects">
         <div className="section-layout" style={{
@@ -310,7 +480,7 @@ export default function Home() {
           <div>
             {[
               {
-                role: "PM, Creator Economy",
+                role: "GM & Product Manager",
                 current: true,
                 company: "CoFounder.AI",
                 url: "https://cofounder.ai",
