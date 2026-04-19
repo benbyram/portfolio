@@ -137,6 +137,11 @@ function EngagementsCarousel() {
                 </div>
                 <a
                   href="#contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const section = document.getElementById("contact");
+                    const startY = window.scrollY; const startTime = performance.now(); const duration = 1000; const animate = (now: number) => { const elapsed = now - startTime; const progress = Math.min(elapsed / duration, 1); const ease = 1 - Math.pow(1 - progress, 3); const targetY = document.body.scrollHeight - window.innerHeight + 600; window.scrollTo(0, startY + (targetY - startY) * ease); if (progress < 1) requestAnimationFrame(animate); }; requestAnimationFrame(animate);
+                  }}
                   style={{
                     fontSize: "11px",
                     letterSpacing: "0.06em",
@@ -166,6 +171,7 @@ export default function Home() {
   const [wordIndex, setWordIndex] = useState(0);
   const [fading, setFading] = useState(false);
   const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
+  const [contactProgress, setContactProgress] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -182,6 +188,19 @@ export default function Home() {
     const onMove = (e: MouseEvent) => setMousePos({ x: e.clientX, y: e.clientY });
     window.addEventListener("mousemove", onMove);
     return () => window.removeEventListener("mousemove", onMove);
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const el = document.getElementById("contact");
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const progress = Math.max(0, Math.min(1, 1 - rect.top / vh));
+      setContactProgress(progress);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
@@ -292,6 +311,21 @@ export default function Home() {
               key={item}
               href={`#${item.toLowerCase()}`}
               style={{ fontSize: "13px", letterSpacing: "0.04em", textTransform: "uppercase" }}
+              onClick={item === "Contact" ? (e) => {
+                e.preventDefault();
+                const startY = window.scrollY;
+                const startTime = performance.now();
+                const duration = 1000;
+                const animate = (now: number) => {
+                  const elapsed = now - startTime;
+                  const progress = Math.min(elapsed / duration, 1);
+                  const ease = 1 - Math.pow(1 - progress, 3);
+                  const targetY = document.body.scrollHeight - window.innerHeight + 600;
+                  window.scrollTo(0, startY + (targetY - startY) * ease);
+                  if (progress < 1) requestAnimationFrame(animate);
+                };
+                requestAnimationFrame(animate);
+              } : undefined}
             >
               {item}
             </a>
@@ -344,6 +378,11 @@ export default function Home() {
             <div style={{ display: "flex", gap: "16px" }}>
               <a
                 href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const section = document.getElementById("contact");
+                  const startY = window.scrollY; const startTime = performance.now(); const duration = 1000; const animate = (now: number) => { const elapsed = now - startTime; const progress = Math.min(elapsed / duration, 1); const ease = 1 - Math.pow(1 - progress, 3); const targetY = document.body.scrollHeight - window.innerHeight + 600; window.scrollTo(0, startY + (targetY - startY) * ease); if (progress < 1) requestAnimationFrame(animate); }; requestAnimationFrame(animate);
+                }}
                 style={{
                   display: "inline-block",
                   padding: "10px 24px",
@@ -406,6 +445,13 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Everything above contact fades out as contact takes over */}
+      <div style={{
+        opacity: Math.max(0, 1 - Math.max(0, contactProgress - 0.4) * 3.5),
+        transition: "opacity 0.05s linear",
+        pointerEvents: contactProgress > 0.7 ? "none" : "auto",
+      }}>
 
       {/* AI Consulting & Speaking */}
       <div id="ai consulting">
@@ -556,8 +602,17 @@ export default function Home() {
         </div>
       </section>
 
+      </div>{/* end fading wrapper */}
+
       {/* Contact */}
-      <section id="contact">
+      <section id="contact" style={{
+        marginTop: "120px",
+        minHeight: `${40 + contactProgress * 60}vh`,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        transition: "min-height 0.05s linear",
+      }}>
         <div className="section-layout" style={{
           display: "grid",
           gridTemplateColumns: "240px 1fr",
@@ -628,7 +683,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
 
       </div>{/* end content wrapper */}
     </div>
