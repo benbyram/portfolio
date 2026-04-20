@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Lora } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -46,6 +47,7 @@ export default function RootLayout({
         className={`${bricolage.variable} ${lora.variable} antialiased`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
